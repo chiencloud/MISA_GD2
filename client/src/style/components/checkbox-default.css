@@ -1,0 +1,72 @@
+.checkbox-default {
+    display: block;
+    position: relative;
+    min-height: 20px;
+    min-width: 20px;
+    padding-left: 20px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.padding-checkbox{
+    padding-left: 30px;
+}
+
+.checkbox-default input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #afafaf;
+    border-radius: 3px;
+}
+
+.checkbox-default input:checked ~ .checkmark {
+    display: block;
+    border: 1px solid #2ca01c;
+    background-color: #ffffff;
+    background-position: -1223px -359px;
+    animation-name: rotateCheckbox;
+    animation-duration: 0.3s;
+}
+
+.checkbox-default input:not(:checked) ~ .checkmark {
+    position: absolute;
+    background-color: #fff;
+    color: #2ca01c;
+    animation-name: rotateHideCheckbox;
+    animation-duration: 0.3s;
+}
+
+@keyframes rotateCheckbox {
+    from {
+        transform: rotate(-90deg);
+    }
+    to {
+        transform: rotate(0);
+    }
+}
+
+@keyframes rotateHideCheckbox {
+    from {
+        transform: rotate(0deg);
+        border: 1px solid #2ca01c;
+    }
+    to {
+        transform: rotate(-90deg);
+        border: 1px solid #afafaf;
+    }
+}

@@ -1,0 +1,116 @@
+.popup-main {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.popup {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.popup-background {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-main-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    padding: 32px;
+    width: 444px;
+    min-width: 444px;
+    background-color: #fff;
+}
+
+.icon-warning {
+    background-position: -592px -456px;
+    height: 48px;
+    width: 48px;
+    min-width: 48px;
+}
+
+.icon-error {
+    background-position: -24px -954px;
+    height: 48px;
+    width: 48px;
+    min-width: 48px;
+}
+
+.icon-question {
+    background-position: -826px -456px;
+    height: 48px;
+    width: 48px;
+    min-width: 48px;
+}
+
+.popup-main-top {
+    display: flex;
+    padding-bottom: 15px;
+}
+
+.popup-content {
+    font-size: 13px;
+    padding: 12px 0 16px 32px;
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+    font-family: inherit;
+}
+
+.popup-main-center {
+    width: 100%;
+    border-top: 1px solid #b8bcc3;
+    padding-bottom: 20px;
+}
+
+.popup-main-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .popup-main-bottom button {
+    padding: 6px 16px;
+    outline: none;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 3px;
+    cursor: pointer;
+} */
+
+/* .popup-cancel {
+    border: 1px solid #8d9096;
+    color: #111;
+    background-color: transparent;
+}
+
+.popup-confirm {
+    border: 1px solid transparent !important;
+    color: #fff;
+    background-color: #2ca01c;
+} */
+
+.popup-center {
+    display: flex;
+    justify-content: center !important;
+}
+
+.popup-right {
+    display: flex;
+    justify-content: right !important;
+}
+
+.popup-right {
+    display: flex;
+    justify-content: left !important;
+}

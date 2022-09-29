@@ -1,0 +1,21 @@
+.btn-icon{
+    background-color: #fff;
+    border: 1px solid #bbb;
+    color: #111;
+    padding: 3px 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn_border_none{
+    border: none;
+}
+
+.btn_bg_none{
+    background-color: transparent;
+}
+
+i{
+    font-size: 13px;
+    margin: 0 10px 0 0;
+}

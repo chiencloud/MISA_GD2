@@ -1,0 +1,83 @@
+.field-input-icon{
+    position: relative;
+}
+
+.input-icon:hover{
+    outline: 1px solid #e2e2e2;
+}
+
+.input-icon:focus{
+    outline: none;
+}
+
+.input-icon-background{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-position: -992px -360px;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+}
+
+
+.input-icon{
+    border: 1px solid #bbb;
+    border-radius:2px;
+    height: 30px;
+    padding-left: 16px;
+    padding-right: 40px;
+    outline: none;
+    width: 100%;
+    background-color: #fff;
+}
+
+.input-icon::placeholder{
+    font-size: 13px;
+    color: #bbbbbb;
+    font-style: italic;
+}
+
+.input-icon:focus{
+    border: 1px solid #019160;
+    font-size: 13px;
+    color: #000000;
+}
+
+/* Thông báo lỗi */
+.error-input-icon{
+    border-color: #FF4747;
+}
+
+.error-input-icon-alert{
+    position: absolute;
+    background-color: #FF4747;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    padding: 6px 15px;
+    border-radius: 7px;
+    bottom: calc(100% + 2px);
+    width: 164px;
+    left: calc(50% - 82px);
+}
+
+.error-input-icon-arrow{
+    position: absolute;
+    background-color: #FF4747;
+    top: calc(100% - 6px);
+    left: calc(50% - 4px);
+    height: 12px;
+    width: 12px;
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+.error-input-icon-content{
+    position: relative;
+    z-index: 1;
+}
+
+
+
