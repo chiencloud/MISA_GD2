@@ -28,7 +28,7 @@
                 </div>
                 <div class="user_info">
                     <div class=" icon_background_1 user_icon"></div>
-                    <div> <p>Nguyễn Thị Dung</p> </div>
+                    <div> <p>Nguyễn Duy Chiến</p> </div>
                     <div class="icon_background_1 arrow_down"></div>
                 </div>
             </div>

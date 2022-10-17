@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "hs+SjHO+4oX/yIF4I+sr2WN6dK4NsLQrJQa4GmB7QqFbHecWwrlxpEcOU8F87bR3wZDldhgrzKLnWYyd5btVqw==",
+  "dgSpecHash": "UFMXSfd/upOV7csTEqdQft98spcOoiG+9S+96OamtT5clOBo2lPA7eQ+JdcIu+76jkrGNZenR7hhxurI3Li2BA==",
   "success": true,
-  "projectFilePath": "D:\\Misa\\GiaiDoan_2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj",
+  "projectFilePath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Chien\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\Chien\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Chien\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Chien\\.nuget\\packages\\mysqlconnector\\2.1.13\\mysqlconnector.2.1.13.nupkg.sha512",
     "C:\\Users\\Chien\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\Chien\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\Chien\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

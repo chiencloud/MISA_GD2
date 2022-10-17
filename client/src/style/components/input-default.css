@@ -7,7 +7,7 @@
     border-radius: 2px;
     min-height: 26px;
     padding-left: 10px;
-    padding-right: 35px;
+    padding-right: 10px;
     outline: none;
     width: 100%;
     font-size: 13px;
@@ -31,7 +31,7 @@ input[type="datetime-local"]{
 }
 
 .input:focus{
-    border: 1px solid #019160;
+    border: 1px solid #0072bc;
     font-size: 13px;
     color: #000000;
 }
@@ -96,6 +96,18 @@ input[type="datetime-local"]{
 .error-input-content{
     position: relative;
     z-index: 1;
+}
+
+.input-text-left{
+    text-align: left;
+}
+
+.input-text-right{
+    text-align: right;
+}
+
+.input-text-center{
+    text-align: center;
 }
 
 

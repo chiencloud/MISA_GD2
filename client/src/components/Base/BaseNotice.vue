@@ -5,7 +5,7 @@
                 <div class="form_title">
                     <div class="title_left"><slot name="title"/></div>
                     <div class="title_right">
-                        <div><i class="fa-solid fa-xmark"></i></div>
+                        <div @click="closeNotice"><i class="fa-solid fa-xmark"></i></div>
                     </div>
                 </div>
                 <div class="content">
@@ -19,7 +19,12 @@
 export default {
     props: {
         width: String // style css 
-    }
+    },
+    methods: {
+        closeNotice(){
+            this.$emit('closeNotice');
+        }
+    },
 }
 </script>
 <style scoped>

@@ -9,8 +9,11 @@
             v-model="modelCb" 
             :value="valCheckbox || ''"
             @change="getValue"
+            :disabled="disable"
         />
-        <span class="icon-background checkmark"></span>
+        <span class="checkmark">
+            <i v-show="modelCb" class="fa-solid fa-check"></i>
+        </span>
     </label>
 </template>
 
@@ -27,6 +30,7 @@ export default {
         'valCheckbox', // giá trị của checkbox
         'fieldName', // Trường dữ liệu trả về cho parent
         'modelCheckbox', // v-model-checkbox
+        'disable'
     ],
     methods: {
 

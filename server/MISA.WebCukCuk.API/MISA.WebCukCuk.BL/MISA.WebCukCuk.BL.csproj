@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BaseBL\" />
+    <ProjectReference Include="..\MISA.WebCukCuk.Common\MISA.WebCukCuk.Common.csproj" />
+    <ProjectReference Include="..\MISA.WebCukCuk.DL\MISA.WebCukCuk.DL.csproj" />
   </ItemGroup>
 
 </Project>

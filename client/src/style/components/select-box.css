@@ -3,21 +3,25 @@
     cursor: pointer;
 }
 
+.select-box input{
+    background-color: transparent;
+}
+
 .select-box-hidden{
-    position: absolute;
+    position: fixed;
     /* bottom: calc(100% + 5px); */
     background-color: #fff;
     border: 1px solid #babec5;
     display: block;
     width: 100%;
     z-index: 200;
-    max-height: 256px;
+    max-height: 208px;
     overflow: auto;
 }
 
 .select-box-hidden button{
     width: 100%;
-    min-height: 28px;
+    min-height: 26px;
     background-color: #fff;
     min-width: 60px;
     display: flex;
@@ -27,21 +31,21 @@
 }
 
 .select-box-hidden button:hover{
-    background-color: rgb(238, 243, 238);
+    background-color: #edf6fd;
 }
 
 .select-box-focus{
-    background-color: rgb(238, 243, 238) !important;
+    background-color: #edf6fd !important;
 }
 
 .select-box-choice{
-    background-color: #2ca01c !important;
+    background-color: #0072bc !important;
     color: #fff;
     font-weight: 500;
 }
 
 .select-box-show{
-    min-height: 28px;
+    min-height: 26px;
     padding: 0 10px;
     background-color: transparent;
     border: 1px solid #babec5;

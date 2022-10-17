@@ -14,20 +14,9 @@
                     :style="`padding: 5px ;min-width: ${item.width}px; width: ${item.width}px`"
                 >
                     {{ item.fieldName }}
-                    <div v-if="showSearchBox" class="search_filter">
-                        <BaseButton val="*" />
-                        <BaseInput />
-                    </div>
+                    <slot :name="item.nameComponentTHead"/>
                 </th>
-                <th v-if="!hideColFixed" class="table-th table-text-center" style="min-width: 150px;  top: -70px; z-index: 1; ">
-                    Ngừng theo dõi
-                    <div class="search_filter">
-                        <select class="not_folow" name="" id="">
-                            <option value="">Không</option>
-                            <option value="">Có</option>
-                        </select>
-                    </div>
-                </th>
+                
             </tr>
         </thead>
         <tbody>
@@ -40,25 +29,26 @@
                         checkboxValue.indexOf(itemRow[dataTable.fieldId]) >= 0,
                 }"
                 @dblclick="dbClickTr(itemRow, itemRow[dataTable.fieldId])"
-                @click="trClick(itemRow[dataTable.fieldId])"
+                @click="trClick(itemRow, itemRow[dataTable.fieldId])"
             >
                 <td
                     v-for="(itemCol, indexCol) in inforTable.field"
                     :key="indexCol"
                     class="table-td"
+                    :class="{
+                        'table-text-left': itemCol.textAlign == 'left',
+                        'table-text-center': itemCol.textAlign == 'center',
+                        'table-text-right': itemCol.textAlign == 'right',
+                    }"
                 >
 
-                    <span v-if="itemCol.type != 'component'">{{ formatData(itemRow, itemCol) }}</span>
-                    <slot :name="itemCol.nameComponent" />
-                </td>
-                <td
-                    class="table-td table-text-center"
-                    :class="{ showFunction: isShow == indexRow }"
-                    v-if="!hideColFixed"
-                >
-                    <div class="function-employee-account" style="text-align: center;">
-                        <BaseCheckBox />
-                    </div>
+                    <span 
+                        v-if="itemCol.type != 'component'" 
+                        :style="`${itemCol.style}; width: ${itemCol.width - 20}px;`" 
+                        :title="formatData(itemRow, itemCol)"
+                        
+                    >{{ formatData(itemRow, itemCol) }}</span>
+                    <slot :name="itemCol.nameComponent" :data="itemRow" :index="indexRow" />
                 </td>
             </tr>
         </tbody>
@@ -97,7 +87,6 @@ export default {
         };
     },
     created(){
-        console.log(this.inforTable)
     },
     methods: {
         /**
@@ -114,7 +103,8 @@ export default {
          * CreatedBy: NDCHIEN (18/8/2022)
          */
         trClick(idRow) {
-            this.rowSelected = idRow;
+            this.rowSelected = idRow[this.dataTable.fieldId];
+            this.$emit('clickTrTable', idRow);
         },
 
         /**
@@ -122,9 +112,9 @@ export default {
          * @param {object} idRow data của hàng
          * CreatedBy: NDCHIEN (18/8/2022)
          */
-        dbClickTr(data) {
+        dbClickTr(data, id) {
             var dataRow = data;
-            this.$emit('dbClickTrTable', dataRow);
+            this.$emit('dbClickTrTable', dataRow, id);
         },
 
         /**

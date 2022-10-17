@@ -1,13 +1,14 @@
 <template>
-    <div class="select-box" :style="{width: width} " @mouseover="mouseOver" @mouseout="mouseOut">
-        <div class="select_container">
-            <div class="select-box-show" :class="{ 'select-box-error': isRequired, 'hidden_border':  setShowBorder}" v-clickoutside="hideBorder">
+    <div class="select-box" :style="`${style}` " @mouseover="mouseOver" @mouseout="mouseOut"  v-click-out-side="hideListData">
+        <div class="select_container" v-click-out-side="hideBorder" ref="selectBoxShow">
+            <div class="select-box-show" :class="{ 'select-box-error': isRequired, 'hidden_border':  setShowBorder}">
                 <input
                     type="text"
                     class="select-box-main"
                     v-model="textInput"
                     ref="inputSelectBox"
                     @input="inputOnChange"
+                    @focus="onFocusInput"
                     @keydown="selecItemUpDown"
                     @click="setShowBorder = false"
                 />
@@ -29,7 +30,9 @@
             </div>
             
         </div>
-        <div v-show="isShowListData" ref="selectBoxHidden" class="select-box-hidden" v-clickoutside="hideListData" :style="styleValHide">
+        
+        <!-- :style="styleValHide" -->
+        <div v-show="isShowListData" ref="selectBoxHidden" class="select-box-hidden" style="top: 0; left: 0" >
             <button v-if="fieldListHide.length > 1" class="select-box-title">
                 <div
                     v-for="(showItem, index) in fieldListHide"
@@ -69,29 +72,29 @@
 </template>
 <script>
 const clickoutside = {
-    mounted(el, binding) {
-        el.clickOutsideEvent = (event) => {
-            // Nếu element hiện tại không phải là element đang click vào
-            // Hoặc element đang click vào không phải là button trong combobox hiện tại thì ẩn đi.
-            if (
-                !(
-                    (
-                        el === event.target || // click phạm vi của combobox__data
-                        el.contains(event.target) || //click vào element con của combobox__data
-                        el.previousElementSibling.contains(event.target)
-                    ) //click vào element button trước combobox data (nhấn vào button thì hiển thị)
-                )
-            ) {
-                // Thực hiện sự kiện tùy chỉnh:
-                binding.value(event, el);
-                // vnode.context[binding.expression](event); // vue 2
-            }
-        };
-        document.body.addEventListener('click', el.clickOutsideEvent);
-    },
-    beforeUnmount: (el) => {
-        document.body.removeEventListener('click', el.clickOutsideEvent);
-    },
+    // mounted(el, binding) {
+    //     el.clickOutsideEvent = (event) => {
+    //         // Nếu element hiện tại không phải là element đang click vào
+    //         // Hoặc element đang click vào không phải là button trong combobox hiện tại thì ẩn đi.
+    //         if (
+    //             !(
+    //                 (
+    //                     el === event.target || // click phạm vi của combobox__data
+    //                     el.contains(event.target) || //click vào element con của combobox__data
+    //                     el.previousElementSibling.contains(event.target)
+    //                 ) //click vào element button trước combobox data (nhấn vào button thì hiển thị)
+    //             )
+    //         ) {
+    //             // Thực hiện sự kiện tùy chỉnh:
+    //             binding.value(event, el);
+    //             // vnode.context[binding.expression](event); // vue 2
+    //         }
+    //     };
+    //     document.body.addEventListener('click', el.clickOutsideEvent);
+    // },
+    // beforeUnmount: (el) => {
+    //     document.body.removeEventListener('click', el.clickOutsideEvent);
+    // },
 };
 
 const keyCode = {
@@ -100,6 +103,8 @@ const keyCode = {
     ArrowDown: 40,
     ESC: 27,
 };
+
+import clickOutSide from "@mahdikhashan/vue3-click-outside";
 
 export default {
     data() {
@@ -116,7 +121,7 @@ export default {
         };
     },
     directives: {
-        clickoutside,
+        clickOutSide,
     },
     props: {
         data: Array, //Truyền data cố định không get từ API
@@ -126,15 +131,17 @@ export default {
         fieldNameValue: String, //Trường dữ liệu lấy value
         fieldName: String, // Trường dữ liệu của data khi gửi lên server
         styleValHide: String, //style form hide
+        style: String, // Css cho selectbox
         required: Boolean, // Trường dữ liệu bắt buộc phải chọn
         focusFirstData: Boolean, // Chọn dữ liệu đầu tiên trong data show lên combobox
-        setData: String, // Set dữ liệu cho checkbox
+        setData: [String, Number], // Set dữ liệu cho checkbox
         messError: String, // nội dung lỗi khi validate selectbox
-        width: String,
+        width: String, // set độ rộng của selectbox
         addSelect: Boolean, // có chức năng thêm select hay không
         addSelectIcon: String, // icon select add
         addSelectColor: String, // color select
-        showBorder: Boolean // show border
+        showBorder: Boolean, // show border
+        id: [String, Number]
     },
 
     methods: {
@@ -160,7 +167,7 @@ export default {
          */
         btnSelectDataOnClick() {
             this.dataFilter = this.data;
-            this.isShowListData = !this.showListData;
+            this.isShowListData = !this.isShowListData;
         },
 
         /**
@@ -168,14 +175,16 @@ export default {
          * CreatedBy: NDCHIEN (18/8/2022)
          */
         itemOnSelect(item, index) {
-            const text = item[this.fieldNameShow];
-            const value = item[this.fieldNameValue];
-            this.textInput = text; // Hiển thị text lên input.
-            this.indexItemSelected = index;
-            this.isShowListData = false;
-            this.isRequired = false; // Ẩn class error nếu có trường bắt buộc
-            this.$emit('update:setData', value);
-            this.$emit('getValue', { val: value, fieldName: this.fieldName });
+            if((item && index) || (item && index == 0)){
+                const text = item[this.fieldNameShow];
+                const value = item[this.fieldNameValue];
+                this.textInput = text; // Hiển thị text lên input.
+                this.indexItemSelected = index;
+                this.isShowListData = false;
+                this.isRequired = false; // Ẩn class error nếu có trường bắt buộc
+                this.$emit('getValue', { val: value, fieldName: this.fieldName, id: this.id });
+                this.$emit('update:setData', value);
+            }
         },
 
         selecItemUpDown() {
@@ -292,7 +301,7 @@ export default {
             if (this.textInput == '') {
                 this.dataMain = this.dataFilter;
                 this.indexItemSelected = null;
-                this.$emit('getValue', { val: '', fieldName: this.fieldName });
+                this.$emit('getValue', { val: '', fieldName: this.fieldNameid, id: this.id });
                 if (this.required && !this.indexItemSelected && !this.textInput && Object.keys(this.dataMain).length) {
                     this.isRequired = true;
                 } else {
@@ -317,6 +326,13 @@ export default {
          */
         mouseOut() {
             this.showError = false;
+        },
+
+        /**
+         * focus
+         */
+        onFocusInput(){
+            this.setShowBorder = false
         },
 
         /**
@@ -379,7 +395,16 @@ export default {
          * CreatedBy: NDCHIEN (29/9/2022)
          */
         clickAddSelect(){
-            this.$emit('showBoxAddSelect');
+            this.$emit('showBoxAddSelect', true);
+        },
+
+        /**
+         * Ẩn border khi click outside
+         */
+        hideBorder(){
+            if(this.showBorder){
+                this.setShowBorder = true
+            }
         }
     },
 
@@ -387,6 +412,27 @@ export default {
         setData(newVal) {
             this.setDataSelecBox(newVal);
         },
+        data(newVal){
+            this.dataFilter = newVal;
+            this.dataMain = newVal;
+            this.setDataSelecBox(this.setData)
+        },
+        isShowListData(newVal){
+            if(newVal){
+                if(this.styleValHide == 'top'){
+                    this.$nextTick(() => {
+                        this.$refs.selectBoxHidden.style.left =  this.$refs.selectBoxShow.getBoundingClientRect().left + 'px'
+                        this.$refs.selectBoxHidden.style.top =  this.$refs.selectBoxShow.getBoundingClientRect().top - this.$refs.selectBoxHidden.offsetHeight - 3 + 'px'
+                    })
+                }
+                else{
+                    this.$nextTick(() => {
+                        this.$refs.selectBoxHidden.style.left =  this.$refs.selectBoxShow.getBoundingClientRect().left + 'px'
+                        this.$refs.selectBoxHidden.style.top =  this.$refs.selectBoxShow.getBoundingClientRect().bottom + 3 + 'px'
+                    })
+                }
+            }
+        }
     },
 
     async created() {
@@ -429,15 +475,9 @@ export default {
         // Set combobox với giá trị được truyền vào
         this.setDataSelecBox(this.setData);
     },
-
-    /**
-     * Ẩn border khi click outside
-     */
-    hideBorder(){
-        if(this.showBorder){
-            this.setShowBorder = true
-        }
-    }
+    mounted() {
+        this.$refs.selectBoxHidden.style.width = this.$refs.selectBoxShow.offsetWidth + 'px'
+    },
 };
 </script>
 <style scoped>

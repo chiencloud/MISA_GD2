@@ -12,20 +12,28 @@
 import TheHeader from './layouts/TheHeader.vue';
 import TheNavbar from './layouts/TheNavbar.vue';
 import TheMaterial from './pages/TheMaterial.vue';
-import { stringApiEmployee, stringApiDepartment} from '@/lib/stringAPI'
+import { stringApiMaterial, stringApiDepartment, stringApiUnit, stringApiStock} from '@/lib/stringAPI'
+import BaseTextArea from './components/Base/BaseTextArea.vue';
 
 // Khởi tạo danh sách chuỗi API Employee
-stringApiEmployee();
+stringApiMaterial();
 
 // Khởi tạo danh sách chuỗi API Department
 stringApiDepartment();
+
+// Khởi tại danh sách chuỗi API Unit
+stringApiUnit();
+
+// Khởi tạo danh sách chuỗi API stock
+stringApiStock();
 
 export default {
   name: 'App',
   components: {
     TheHeader,
     TheNavbar,
-    TheMaterial
+    TheMaterial,
+    BaseTextArea
 }
 }
 </script>
@@ -60,7 +68,5 @@ export default {
     background-image: url('@/assets/resource/Sprites.64af8f61.svg');
   }
 
-  .content{
-  }
 
 </style>

@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "dF/+Cc0E9YxaOzOKlGbDEeKPSN1aMLidoRzHbyhGKeGGpTeaHVZsUvyCAff5R7SJbOxJ/84AECUjjz35O3pZjQ==",
+  "dgSpecHash": "WhpS/X2UdwTe0iFdwoW1l2rVmSK4b3g/kTNc/2gxjVm9t5rjKpGQfqtH0Ck6g1BqQLPb8k+rCQsn9eaWaiVS6g==",
   "success": true,
-  "projectFilePath": "D:\\Misa\\GiaiDoan_2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.BL\\MISA.WebCukCuk.BL.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.BL\\MISA.WebCukCuk.BL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Chien\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\Chien\\.nuget\\packages\\mysqlconnector\\2.1.13\\mysqlconnector.2.1.13.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,6 +1,7 @@
 <template lang="">
     <button 
         class="btn-icon"
+        ref="buttonIcon"
         :class="{'btn_border_none': noneBorder, 'btn_bg_none': noneBg}"
         :style="styleCss"
     >
@@ -19,6 +20,14 @@ export default {
         styleCss: String,   
         noneBorder: Boolean,
         noneBg: Boolean,
+    },
+    methods: {
+        /**
+         * Focus button
+         */
+        focusFunc(){
+            this.$refs.buttonIcon.focus();
+        }
     },
 };
 </script>

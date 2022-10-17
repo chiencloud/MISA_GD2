@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Dapper/2.0.123": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Dapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
         "type": "package",
         "build": {
@@ -16,10 +29,27 @@
       "Microsoft.OpenApi/1.2.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "MySqlConnector/2.1.13": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Swashbuckle.AspNetCore/6.2.3": {
@@ -40,10 +70,14 @@
           "Microsoft.OpenApi": "1.2.3"
         },
         "compile": {
-          "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {}
+          "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {}
+          "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -55,27 +89,95 @@
           "Swashbuckle.AspNetCore.Swagger": "6.2.3"
         },
         "compile": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
+          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
+          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "Swashbuckle.AspNetCore.SwaggerUI/6.2.3": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
+          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
+          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "MISA.WebCukCuk.BL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MISA.WebCukCuk.Common": "1.0.0",
+          "MISA.WebCukCuk.DL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MISA.WebCukCuk.BL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MISA.WebCukCuk.BL.dll": {}
+        }
+      },
+      "MISA.WebCukCuk.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MySqlConnector": "2.1.13"
+        },
+        "compile": {
+          "bin/placeholder/MISA.WebCukCuk.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MISA.WebCukCuk.Common.dll": {}
+        }
+      },
+      "MISA.WebCukCuk.DL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Dapper": "2.0.123",
+          "MISA.WebCukCuk.Common": "1.0.0",
+          "MySqlConnector": "2.1.13"
+        },
+        "compile": {
+          "bin/placeholder/MISA.WebCukCuk.DL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MISA.WebCukCuk.DL.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "Dapper/2.0.123": {
+      "sha512": "RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
+      "type": "package",
+      "path": "dapper/2.0.123",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Dapper.png",
+        "dapper.2.0.123.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
+        "lib/net5.0/Dapper.dll",
+        "lib/net5.0/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
       "sha512": "LH4OE/76F6sOCslif7+Xh3fS/wUUrE5ryeXAMcoCnuwOQGT5Smw0p57IgDh/pHgHaGz/e+AmEQb7pRgb++wt0w==",
       "type": "package",
@@ -118,6 +220,35 @@
         "lib/netstandard2.0/Microsoft.OpenApi.xml",
         "microsoft.openapi.1.2.3.nupkg.sha512",
         "microsoft.openapi.nuspec"
+      ]
+    },
+    "MySqlConnector/2.1.13": {
+      "sha512": "Y3qts7mnuZ4EGEQOI4xJ1n+9ZJOmrcwD2CdqyAXuQONBkrc2ENDywE6ZBysFaRojXrnWzLXpc595+GYlN/PI9Q==",
+      "type": "package",
+      "path": "mysqlconnector/2.1.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net45/MySqlConnector.dll",
+        "lib/net45/MySqlConnector.xml",
+        "lib/net461/MySqlConnector.dll",
+        "lib/net461/MySqlConnector.xml",
+        "lib/net471/MySqlConnector.dll",
+        "lib/net471/MySqlConnector.xml",
+        "lib/net5.0/MySqlConnector.dll",
+        "lib/net5.0/MySqlConnector.xml",
+        "lib/net6.0/MySqlConnector.dll",
+        "lib/net6.0/MySqlConnector.xml",
+        "lib/netcoreapp3.1/MySqlConnector.dll",
+        "lib/netcoreapp3.1/MySqlConnector.xml",
+        "lib/netstandard2.0/MySqlConnector.dll",
+        "lib/netstandard2.0/MySqlConnector.xml",
+        "lib/netstandard2.1/MySqlConnector.dll",
+        "lib/netstandard2.1/MySqlConnector.xml",
+        "logo.png",
+        "mysqlconnector.2.1.13.nupkg.sha512",
+        "mysqlconnector.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/6.2.3": {
@@ -200,10 +331,27 @@
         "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "MISA.WebCukCuk.BL/1.0.0": {
+      "type": "project",
+      "path": "../MISA.WebCukCuk.BL/MISA.WebCukCuk.BL.csproj",
+      "msbuildProject": "../MISA.WebCukCuk.BL/MISA.WebCukCuk.BL.csproj"
+    },
+    "MISA.WebCukCuk.Common/1.0.0": {
+      "type": "project",
+      "path": "../MISA.WebCukCuk.Common/MISA.WebCukCuk.Common.csproj",
+      "msbuildProject": "../MISA.WebCukCuk.Common/MISA.WebCukCuk.Common.csproj"
+    },
+    "MISA.WebCukCuk.DL/1.0.0": {
+      "type": "project",
+      "path": "../MISA.WebCukCuk.DL/MISA.WebCukCuk.DL.csproj",
+      "msbuildProject": "../MISA.WebCukCuk.DL/MISA.WebCukCuk.DL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "MISA.WebCukCuk.BL >= 1.0.0",
+      "MISA.WebCukCuk.Common >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -213,11 +361,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Misa\\GiaiDoan_2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj",
+      "projectUniqueName": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj",
       "projectName": "MISA.WebCukCuk.API.NTier",
-      "projectPath": "D:\\Misa\\GiaiDoan_2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj",
+      "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj",
       "packagesPath": "C:\\Users\\Chien\\.nuget\\packages\\",
-      "outputPath": "D:\\Misa\\GiaiDoan_2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\obj\\",
+      "outputPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Chien\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -233,7 +381,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.BL\\MISA.WebCukCuk.BL.csproj": {
+              "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.BL\\MISA.WebCukCuk.BL.csproj"
+            },
+            "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj": {
+              "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -257,7 +412,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -269,7 +425,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

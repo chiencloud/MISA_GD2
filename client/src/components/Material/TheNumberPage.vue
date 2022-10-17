@@ -7,25 +7,27 @@
             <div class="number-pages-right">
                 <div class="number-pages-navigate">
                     <div class="prev-page">
-                        <BaseButtonIcon noneBg noneBorder icon="fa-solid fa-angles-left" colorIcon="#bbb"/>
-                        <BaseButtonIcon noneBg noneBorder icon="fa-solid fa-angle-left" colorIcon="#bbb"/>
+                        <BaseButtonIcon noneBg noneBorder icon="fa-solid fa-angles-left" colorIcon="#bbb" @click="getPage(1)"/>
+                        <BaseButtonIcon noneBg noneBorder icon="fa-solid fa-angle-left" colorIcon="#bbb" @click="getPage(pageChoice - 1)"/>
                     </div>
                     <div class="list-pages">
                         Trang &ensp;
-                        <span style="width: 60px"><BaseInput /></span>
-                        &ensp;trên 1
-                        <!-- <button
-                            v-for="(item, index) in pageNumber"
-                            :key="item"
-                            :class="{ 'page-choice': pageChoice == item && parseInt(item) }"
-                            @click="clickNumberTable(pageNumber[index - 1], item, pageNumber[index + 1])"
-                            >
-                            {{ item }} -->
-                        <!-- </button> -->
+                        <span style="width: 60px">
+                            <BaseInput 
+                                @keyboard="changeNumberPage"
+                                @onBlur="blurTextSearchNumberPage"
+                                type="int"
+                                v-model:value="pageChoice"
+                            />
+                        </span>
+                        &ensp;trên {{totalPage}}
                     </div>
                     <div class="next-page">
-                        <BaseButtonIcon noneBg noneBorder icon="fa-solid fa-angle-right" colorIcon="#bbb"/>
-                        <BaseButtonIcon noneBg noneBorder icon="fa-solid fa-angles-right" colorIcon="#bbb"/>
+                        <BaseButtonIcon noneBg noneBorder icon="fa-solid fa-angle-right" colorIcon="#bbb" @click="getPage(pageChoice + 1)"/>
+                        <BaseButtonIcon noneBg noneBorder icon="fa-solid fa-angles-right" colorIcon="#bbb" @click="getPage(totalPage) "/>
+                    </div>
+                    <div class="reload">
+                        <BaseButtonIcon noneBg noneBorder icon="fa-solid fa-arrow-rotate-right" colorIcon="#bbb" @click="reloadAll() "/>
                     </div>
                 </div>
                 <div class="number-item-on-pages">
@@ -33,23 +35,23 @@
                         :data="listDataEmpInPage"
                         addSelectIcon="fa-solid fa-plus"
                         addSelectColor="#2281c1"
-                        width="100px"
+                        :style="`width: 100px`"
                         fieldNameShow="NumberWriteShow"
                         fieldNameValue="NumberWrite"
-                        setData="20"
+                        setData="50"
                         fieldName="NumberWrite"
                         :fieldListHide="[
                             { field: 'NumberWriteShow' },
                         ]"
                         focusFirstData
-                        styleValHide="bottom: calc(100% + 5px)"
+                        styleValHide="top"
                         ref="selectItemPerPage"
                         @getValue="getValueEmpInPage"
                     />
                 </div>
             </div>
             <div class="number-pages-left">
-                Hiển thị 1 - 100 trên <b>{{ totalCount }}</b> kết quả
+                Hiển thị {{(pageChoiceOld - 1) * pageSize + 1}} - {{pageChoiceOld * pageSize < totalCount ? pageChoiceOld * pageSize : totalCount}} trên <b>{{ totalCount }}</b> kết quả
             </div>
         </div>
     </div>
@@ -68,9 +70,10 @@ export default {
     data() {
         return {
             pageChoice: 1, // page number được chọn
-            pageNumber: [], // danh sách số trang
+            pageChoiceOld: 1, // page number được chọn
             totalEmployee: 0, // tổng số nhân viên
             pageSize: 0, // kích thước một trang
+            totalPage: 0, // tổng số trang
             // Danh sách hiển thị số bản ghi trên trang
             listDataEmpInPage: [
                 { NumberWriteShow: '20', NumberWrite: 20 },
@@ -92,144 +95,108 @@ export default {
             if (dataValue.val && dataValue.fieldName) {
                 this.pageNumber = []; // Khỏi tạo lại danh sách số trang
                 this.pageSize = dataValue.val; // gán kích thước một trang
-                var a = parseInt(this.totalCount / this.pageSize);
-                if (this.totalCount % dataValue.val != 0) a++;
-
-                // Nếu số trang > 5 sẽ hiển thị dấu ...
-                if (a > 5) {
-                    this.pageNumber.push(1);
-                    if (this.pageChoice <= 2) {
-                        this.pageNumber.push(2);
-                        this.pageNumber.push(3);
-                        this.pageNumber.push('...');
-                    }
-                    this.pageNumber.push(a);
-                } else {
-                    for (let i = 1; i <= a; i++) {
-                        this.pageNumber.push(i);
-                    }
-                }
+                this.totalPage = parseInt(this.totalCount / this.pageSize);
+                if (this.totalCount % dataValue.val != 0) this.totalPage++;
 
                 // this.pageNumber = pageNumberShow
-                this.pageChoice = this.pageNumber[0];
+                this.$emit('getDataNumberTable', {
+                    pageNumber: this.pageChoice,
+                    pageSize: this.pageSize,
+                });
+                this.pageChoiceOld = this.pageChoice
+            }
+        },
+
+
+        /**
+         * Blur text search number page
+         */
+        blurTextSearchNumberPage(data){
+            try {
+                if(data){
+                    if(data.val <= this.totalPage && data.val >= 1){
+                        this.pageChoice = data.val 
+                        this.pageChoiceOld = data.val 
+                        this.$emit('getDataNumberTable', { 
+                            pageNumber: this.pageChoice,
+                            pageSize: this.pageSize,
+                        });
+                        this.pageChoiceOld = this.pageChoice
+                    }
+                    else{
+                        this.pageChoice = this.pageChoiceOld
+                    }
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        /**
+         * thay đổi
+         */
+        changeNumberPage(data){
+            try {
+                if(data){
+                    switch (data.keyCode) {
+                        case 13: // Enter
+                            if(data.val <= this.totalPage && data.val >= 1){
+                                this.pageChoice = data.val 
+                                this.pageChoiceOld = data.val 
+                                this.$emit('getDataNumberTable', {
+                                    pageNumber: this.pageChoice,
+                                    pageSize: this.pageSize,
+                                });
+                            }
+                            else{
+                                this.pageChoice = this.pageChoiceOld
+                            }
+                            break;
+                    
+                        default:
+                            break;
+                    }
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        reloadAll(){
+            this.$emit('reloadAll');
+        },
+
+        /**
+         * Lấy trang
+         * @param {*} pagePosition 
+         */
+        getPage(pagePosition){
+            if(pagePosition <= this.totalPage && pagePosition >= 1){
+                this.pageChoice = pagePosition
+                this.pageChoiceOld = pagePosition 
                 this.$emit('getDataNumberTable', {
                     pageNumber: this.pageChoice,
                     pageSize: this.pageSize,
                 });
             }
-        },
-
-        /**
-         * click vào số trang
-         * CreatedBy: NDCHIEN (18/8/2022)
-        */ 
-        clickNumberTable(pagePrev, pageNumber, pageNext) {
-            // Khởi tạo lại page number
-
-            var a = parseInt(this.totalCount / this.pageSize);
-            if (this.totalCount % this.pageSize != 0) a++;
-
-            // Click vào số trang
-            if (parseInt(pageNumber)) {
-                this.pageChoice = pageNumber;
-
-                if (a > 5) {
-                    this.pageNumber = []; // Khỏi tạo lại danh sách số trang
-                    this.pageNumber.push(1);
-                    if (this.pageChoice <= 2) {
-                        this.pageNumber.push(2);
-                        this.pageNumber.push(3);
-                        this.pageNumber.push('...');
-                    } else if (this.pageChoice > 2 && this.pageChoice < a - 2) {
-                        this.pageNumber.push('...');
-                        this.pageNumber.push(this.pageChoice);
-                        this.pageNumber.push(this.pageChoice + 1);
-                        this.pageNumber.push(this.pageChoice + 2);
-                        this.pageNumber.push('...');
-                    } else {
-                        this.pageNumber.push('...');
-                        this.pageNumber.push(a - 2);
-                        this.pageNumber.push(a - 1);
-                    }
-                    this.pageNumber.push(a);
-                }
-
-                // Load bảng khi chọn trang
-                this.$emit('getDataNumberTable', {
-                    pageNumber: this.pageChoice,
-                    pageSize: this.pageSize,
-                });
-            } 
-            // Khi click vào ...
-            else if (pageNext && pagePrev) {
-                if (parseInt(pageNext) == a) {
-                    this.pageNumber = []; // Khỏi tạo lại danh sách số trang
-                    this.pageNumber.push(1);
-                    if (parseInt(pagePrev) >= a - 3) {
-                        this.pageNumber.push('...');
-                        this.pageNumber.push(a - 2);
-                        this.pageNumber.push(a - 1);
-                    } else if (parseInt(pagePrev) >= 3 && parseInt(pagePrev) < a - 3) {
-                        this.pageNumber.push('...');
-                        this.pageNumber.push(parseInt(pagePrev) + 1);
-                        this.pageNumber.push(parseInt(pagePrev) + 2);
-                        this.pageNumber.push(parseInt(pagePrev) + 3);
-                        this.pageNumber.push('...');
-                    } else {
-                        this.pageNumber.push(2);
-                        this.pageNumber.push(3);
-                        this.pageNumber.push('...');
-                    }
-                    this.pageNumber.push(a);
-                } else if (parseInt(pagePrev) == 1) {
-                    this.pageNumber = []; // Khỏi tạo lại danh sách số trang
-                    this.pageNumber.push(1);
-                    if (parseInt(pageNext) <= 4) {
-                        this.pageNumber.push(2);
-                        this.pageNumber.push(3);
-                        this.pageNumber.push('...');
-                    } else if (parseInt(pageNext) > 4 && parseInt(pageNext) <= a - 2) {
-                        this.pageNumber.push('...');
-                        this.pageNumber.push(parseInt(pageNext) - 3);
-                        this.pageNumber.push(parseInt(pageNext) - 2);
-                        this.pageNumber.push(parseInt(pageNext) - 1);
-                        this.pageNumber.push('...');
-                    } else {
-                        this.pageNumber.push('...');
-                        this.pageNumber.push(a - 2);
-                        this.pageNumber.push(a - 1);
-                    }
-                    this.pageNumber.push(a);
-                }
+            else{
+                this.pageChoice = this.pageChoiceOld
             }
         },
 
         /**
-         * khởi tạo sô trang
-         * CreatedBy: NDCHIEN (18/8/2022) 
+         * khởi tạo sô trang 
         */ 
-        initNumberPage(pageSize = 20){
+        initNumberPage(pageSize = 50){
             if(this.$refs.selectItemPerPage.getValueSelectBox().value){
                 pageSize = this.$refs.selectItemPerPage.getValueSelectBox().value
             }
             this.pageSize = pageSize;
-            var a = parseInt(this.totalCount / this.pageSize);
-            if (this.totalCount % this.pageSize != 0) a++;
-            
-            this.pageNumber = []; // Khỏi tạo lại danh sách số trang
-            if (a > 5) {
-                this.pageNumber.push(1); 
-                this.pageNumber.push(2);
-                this.pageNumber.push(3);
-                this.pageNumber.push('...');
-                this.pageNumber.push(a);
-            }
-            else {
-                for (let i = 1; i <= a; i++) {
-                    this.pageNumber.push(i);
-                }
-            }
+            this.totalPage = parseInt(this.totalCount / this.pageSize);
+            if (this.totalCount % this.pageSize != 0) this.totalPage++;
         }
+
+        
     }
 };
 </script>

@@ -34,9 +34,20 @@
     border-radius: 3px;
 }
 
+.checkmark{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkmark i{
+    margin: 0;
+    color: #0072bc;
+}
+
 .checkbox-default input:checked ~ .checkmark {
     display: block;
-    border: 1px solid #2ca01c;
+    border: 1px solid #0072bc;
     background-color: #ffffff;
     background-position: -1223px -359px;
     animation-name: rotateCheckbox;
@@ -46,7 +57,7 @@
 .checkbox-default input:not(:checked) ~ .checkmark {
     position: absolute;
     background-color: #fff;
-    color: #2ca01c;
+    color: #0072bc;
     animation-name: rotateHideCheckbox;
     animation-duration: 0.3s;
 }
@@ -63,7 +74,7 @@
 @keyframes rotateHideCheckbox {
     from {
         transform: rotate(0deg);
-        border: 1px solid #2ca01c;
+        border: 1px solid #0072bc;
     }
     to {
         transform: rotate(-90deg);

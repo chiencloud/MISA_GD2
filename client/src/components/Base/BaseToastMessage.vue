@@ -2,7 +2,7 @@
     <div class="toast-message">
         <div class="toast-message-left">
             <div class="toast-icon">
-                <div class="icon-background" :class="iconShow"></div>
+                <div class="icon_background_1" :class="iconShow"></div>
             </div>
             <div class="toast-message-content">
                 <span class="toast-message-color" :class="toastColor">
@@ -11,7 +11,7 @@
                 {{ messageToast }}
             </div>
         </div>
-        <div class="icon-background toast-message-close" @click="closeToast()"></div>
+        <div class="icon_background_1 toast-message-close" @click="closeToast()"></div>
     </div>
 </template>
 <script>

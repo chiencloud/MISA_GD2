@@ -33,6 +33,12 @@
 
 .row-selected .table-td{
     background-color: #e5f3ff ;
+} 
+
+.table-td span{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .table-employee td{

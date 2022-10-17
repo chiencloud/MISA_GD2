@@ -1,14 +1,18 @@
-<template>
+<template >
     <div class="popup-main" @keyup="keyboard">
         <!-- Popup Warning delete  -->
         <div class="popup"  v-if="isShowWarningDelete || false">
+            
             <div class="popup-background"></div>
             <div class="popup-main-content">
+                <div class="title_popup">
+                    <div class="title_popup_left">CUKCUK - Quản lý nhà hàng</div>
+                    <div class="title_popup_right"><div @click="closePopup"><i class="fa-solid fa-xmark"></i></div></div>
+                </div>
                 <div class="popup-main-top">
-                    <div class="icon-background icon-warning"></div>
+                    <div class="icon_background_1 icon-warning"></div>
                     <div class="popup-content">{{ message }}</div>
                 </div>
-                <div class="popup-main-center"></div>
                 <div class="popup-main-bottom">
                     <div>
                         <div ref="refFirstWD" @focus="focusLast('btn1WD')" tabindex="0"></div>
@@ -26,8 +30,12 @@
         <div class="popup" v-if="isShowWarning || false">
             <div class="popup-background"></div>
             <div class="popup-main-content">
+                <div class="title_popup">
+                    <div class="title_popup_left">CUKCUK - Quản lý nhà hàng</div>
+                    <div class="title_popup_right"><div @click="closePopup"><i class="fa-solid fa-xmark"></i></div></div>
+                </div>
                 <div class="popup-main-top">
-                    <div class="icon-background icon-warning"></div>
+                    <div class="icon_background_1 icon-warning"></div>
                     <div class="popup-content">
                         {{ message }}
                     </div>
@@ -43,8 +51,12 @@
         <div class="popup" v-if="isShowError || false">
             <div class="popup-background"></div>
             <div class="popup-main-content">
+                <div class="title_popup">
+                    <div class="title_popup_left">CUKCUK - Quản lý nhà hàng</div>
+                    <div class="title_popup_right"><div @click="closePopup"><i class="fa-solid fa-xmark"></i></div></div>
+                </div>
                 <div class="popup-main-top">
-                    <div class="icon-background icon-error"></div>
+                    <div class="icon_background_1 icon-error"></div>
                     <div class="popup-content">{{ message }}</div>
                 </div>
                 <div class="popup-main-center"></div>
@@ -58,8 +70,12 @@
         <div class="popup" v-if="isShowQuestion || false">
             <div class="popup-background"></div>
             <div class="popup-main-content">
+                <div class="title_popup">
+                    <div class="title_popup_left">CUKCUK - Quản lý nhà hàng</div>
+                    <div class="title_popup_right"><div @click="closePopup"><i class="fa-solid fa-xmark"></i></div></div>
+                </div>
                 <div class="popup-main-top">
-                    <div class="icon-background icon-question"></div>
+                    <div class="icon_background_1 icon-question"></div>
                     <div class="popup-content">{{ message }}</div>
                 </div>
                 <div class="popup-main-center"></div>
@@ -146,14 +162,14 @@ export default {
          * CreatedBy: NDCHIEN (18/8/2022)
          */
         keyboard(){
-            switch (event.keyCode) {
-                case 27:
-                    this.closePopup();
-                    break;
+            // switch (event.keyCode) {
+            //     case 27:
+            //         this.closePopup();
+            //         break;
             
-                default:
-                    break;
-            }
+            //     default:
+            //         break;
+            // }
         },
 
         /**

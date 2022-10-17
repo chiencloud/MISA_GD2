@@ -1,3 +1,5 @@
+import {ERROR_BE} from './resource'
+
 /**
  * So sánh object
  * @param {Object} object1
@@ -6,17 +8,12 @@
  * CreatedBy: NDCHIEN (18/8/2022) 
  */
 function shallowEqual(object1, object2) {
-    const keys1 = Object.keys(object1);
-    const keys2 = Object.keys(object2);
-    if (keys1.length !== keys2.length) {
-        return false;
+    const keys1 = JSON.stringify(object1);
+    const keys2 = JSON.stringify(object2);
+    if(keys1 == keys2){
+        return true
     }
-    for (let key of keys1) {
-        if (object1[key] !== object2[key]) {
-            return false;
-        }
-    }
-    return true;
+    return false;
 }
 
 /**
@@ -150,4 +147,24 @@ function generateUUID() {
     });
 }
 
-export { shallowEqual, clickoutside, formatDate, formatGender, fetchAPI, generateUUID };
+/**
+ * Xóa tham chiếu
+ * @param {*} value Dữ liệu cần xóa tham chiếu
+ * @returns 
+ */
+function deleteReference(value){
+    return JSON.parse(JSON.stringify(value))
+}
+
+/**
+ * Lấy tên lỗi
+ * @param {string} errorCode Mã lỗi
+ */
+function getErrorBE(errorCode){
+    if(ERROR_BE[errorCode]){
+        return ERROR_BE[errorCode]
+    }
+    return ERROR_BE.e000
+}
+
+export { shallowEqual, clickoutside, formatDate, formatGender, fetchAPI, generateUUID, deleteReference, getErrorBE };

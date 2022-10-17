@@ -2,61 +2,61 @@
  * Chuỗi call API employee
  * CreatedBy: NDCHIEN (18/8/2022) 
  */
-function stringApiEmployee() {
-    let urlMainEmployee = `${process.env.VUE_APP_URL_API}Employees`
+function stringApiMaterial() {
+    let urlMainMaterial = `${process.env.VUE_APP_URL_API}Materials`
 
     /**
      * Tạo chuỗi call API thêm mới nhân viên, lấy toàn bộ danh sách nhân viên
      */
-    String.prototype.addEmployee = function () {
-        return `${urlMainEmployee}/`;
+    String.prototype.addMaterial = function () {
+        return `${urlMainMaterial}/`;
     };
 
     /**
      * Tạo chuỗi call API cập nhập thông tin 1 nhân viên
-     * @param {string} idEmployee
+     * @param {string} idMaterial
      */
-    String.prototype.updateEmployee = function (idEmployee) {
-        return `${urlMainEmployee}/${idEmployee}`;
+    String.prototype.updateMaterial = function (idMaterial) {
+        return `${urlMainMaterial}/${idMaterial}`;
     };
 
     /**
-     * Tạo chuỗi call API chuỗi filter employee
+     * Tạo chuỗi call API chuỗi filter Material
      * @param {int} pageSize
      * @param {int} pageNumber
      * @param {string} textSearch
      */
-    String.prototype.filterEployeeAPI = function (pageSize, pageNumber, textSearch = '') {
-        return `${urlMainEmployee}/Filter?pageSize=${pageSize}&pageNumber=${pageNumber}&textSearch=${textSearch}`;
+    String.prototype.filterMaterialAPI = function (pageSize, pageNumber, textSearch = '', sort = "") {
+        return `${urlMainMaterial}/Filter?pageSize=${pageSize}&pageNumber=${pageNumber}&filter=${textSearch}&sort=${sort}`;
     };
 
     /**
      * Tạo chuỗi call API tạo mới mã nhân viên
      */
-    String.prototype.newEmployeeCode = function () {
-        return `${urlMainEmployee}/NewEmployeeCode`;
+    String.prototype.newMaterialCode = function (code) {
+        return `${urlMainMaterial}/GetNewCode?code=${code}`;
     };
 
     /**
      * Tạo chuỗi call API xuất file excel danh sách nhân viên
      */
-    String.prototype.getFileListEmployee = function () {
-        return `${urlMainEmployee}/FileListEmployee`;
+    String.prototype.getFileListMaterial = function () {
+        return `${urlMainMaterial}/FileListMaterial`;
     };
 
     /**
      * Tạo chuỗi call API xóa 1 nhân viên
-     * @param {string} idEmployeeDel
+     * @param {string} idMaterialDel
      */
-    String.prototype.deleteOneEmployee = function (idEmployeeDel) {
-        return `${urlMainEmployee}/${idEmployeeDel}`;
+    String.prototype.deleteOneMaterial = function (idMaterialDel) {
+        return `${urlMainMaterial}/${idMaterialDel}`;
     };
 
     /**
      * Tạo chuỗi call API xóa nhiều nhân viên
      */
-    String.prototype.deleteMultipleEmployee = function () {
-        return `${urlMainEmployee}/DeleteMultipleEmployee`;
+    String.prototype.deleteMultipleMaterial = function () {
+        return `${urlMainMaterial}/DeleteMultipleMaterial`;
     };
 }
 
@@ -74,4 +74,38 @@ function stringApiDepartment() {
         return `${urlMainDepartment}`;
     };
 }
-export { stringApiEmployee, stringApiDepartment}
+
+/**
+ * Chuỗi call API unit
+ * CreatedBy: NDCHIEN (18/8/2022) 
+ */
+function stringApiUnit() {
+    let urlMainUnit = `${process.env.VUE_APP_URL_API}Units`
+
+    /**
+     * Tạo chuỗi call API thêm mới đơn vị, lấy toàn bộ danh sách đơn vị
+     */
+    String.prototype.getAllUnit = function () {
+        return `${urlMainUnit}`
+    }
+
+}
+
+/**
+ * Chuỗi call API Stock
+ * CreatedBy: NDCHIEN (18/8/2022) 
+ */
+ function stringApiStock() {
+    let urlMainStock = `${process.env.VUE_APP_URL_API}Stocks`
+
+    /**
+     * Tạo chuỗi call API thêm mới đơn vị, lấy toàn bộ danh sách đơn vị
+     */
+    String.prototype.getAllStock = function () {
+        return `${urlMainStock}`
+    }
+
+}
+
+
+export { stringApiMaterial, stringApiDepartment, stringApiUnit, stringApiStock}

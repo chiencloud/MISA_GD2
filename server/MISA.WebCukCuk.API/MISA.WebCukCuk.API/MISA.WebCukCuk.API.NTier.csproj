@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BaseController\" />
+    <ProjectReference Include="..\MISA.WebCukCuk.BL\MISA.WebCukCuk.BL.csproj" />
+    <ProjectReference Include="..\MISA.WebCukCuk.Common\MISA.WebCukCuk.Common.csproj" />
   </ItemGroup>
 
 </Project>

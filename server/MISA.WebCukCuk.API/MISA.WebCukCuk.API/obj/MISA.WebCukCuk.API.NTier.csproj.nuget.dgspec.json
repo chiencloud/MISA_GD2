@@ -1,17 +1,150 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Misa\\GiaiDoan_2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj": {}
+    "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj": {}
   },
   "projects": {
-    "D:\\Misa\\GiaiDoan_2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj": {
+    "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Misa\\GiaiDoan_2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj",
+        "projectUniqueName": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj",
         "projectName": "MISA.WebCukCuk.API.NTier",
-        "projectPath": "D:\\Misa\\GiaiDoan_2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj",
+        "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API.NTier.csproj",
         "packagesPath": "C:\\Users\\Chien\\.nuget\\packages\\",
-        "outputPath": "D:\\Misa\\GiaiDoan_2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\obj\\",
+        "outputPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Chien\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.BL\\MISA.WebCukCuk.BL.csproj": {
+                "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.BL\\MISA.WebCukCuk.BL.csproj"
+              },
+              "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj": {
+                "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.BL\\MISA.WebCukCuk.BL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.BL\\MISA.WebCukCuk.BL.csproj",
+        "projectName": "MISA.WebCukCuk.BL",
+        "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.BL\\MISA.WebCukCuk.BL.csproj",
+        "packagesPath": "C:\\Users\\Chien\\.nuget\\packages\\",
+        "outputPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.BL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Chien\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj": {
+                "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj"
+              },
+              "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.DL\\MISA.WebCukCuk.DL.csproj": {
+                "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.DL\\MISA.WebCukCuk.DL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj",
+        "projectName": "MISA.WebCukCuk.Common",
+        "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj",
+        "packagesPath": "C:\\Users\\Chien\\.nuget\\packages\\",
+        "outputPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Chien\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,9 +173,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Swashbuckle.AspNetCore": {
+            "MySqlConnector": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[2.1.13, )"
             }
           },
           "imports": [
@@ -51,19 +184,86 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.DL\\MISA.WebCukCuk.DL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.DL\\MISA.WebCukCuk.DL.csproj",
+        "projectName": "MISA.WebCukCuk.DL",
+        "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.DL\\MISA.WebCukCuk.DL.csproj",
+        "packagesPath": "C:\\Users\\Chien\\.nuget\\packages\\",
+        "outputPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.DL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Chien\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj": {
+                "projectPath": "D:\\Misa\\MISA_GD2\\server\\MISA.WebCukCuk.API\\MISA.WebCukCuk.Common\\MISA.WebCukCuk.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.1.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

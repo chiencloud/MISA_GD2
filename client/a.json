@@ -1,0 +1,26 @@
+[
+    {
+        "xtype":"filter",
+        "isCreateFromFilterRow":true,
+        "property":"Inactive",
+        "operator":"=",
+        "value":0,
+        "type":"int"
+    },
+    {
+        "xtype":"filter",
+        "isCreateFromFilterRow":true,
+        "property":"InventoryItemCode",
+        "operator":"LIKE",
+        "value":"CHA",
+        "type":"string",
+        "addition":"and",
+        "group":"InventoryItemCodeFromFilterRow"
+    },
+    {
+        "Field": "MaterialName",
+        "Operate": "LIKE",
+        "Addition": "AND",
+        "Value": "CHA"
+    }
+]

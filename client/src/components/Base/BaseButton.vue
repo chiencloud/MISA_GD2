@@ -14,7 +14,6 @@ export default {
     methods: {
         focusFunc(){
             this.$refs.buttonDefault.focus();
-            console.log(1)
         }
     },
 };
